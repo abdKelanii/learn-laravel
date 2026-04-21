@@ -9,10 +9,7 @@
             <h2 id="contact-form-title" style="margin: 0 0 12px; font-size: 18px;">Message</h2>
 
             <form>
-                <div style="margin-bottom: 12px;">
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Doe">
-                </div>
+                <x-form.input id="name" label="Name" name="name" autocomplete="name" placeholder="Jane Doe" />
 
                 <div style="margin-bottom: 12px;">
                     <label for="email">Email</label>
