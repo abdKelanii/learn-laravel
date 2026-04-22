@@ -1,8 +1,21 @@
-<x-layout title="Contact">
+<x-layout :title="is_array($title ?? null) ? ($title['title'] ?? 'Contact') : ($title ?? 'Contact')">
     <header>
         <h1>Contact</h1>
         <p>Have a question or feedback? Send a quick message below or reach me using the details on the right.</p>
     </header>
+
+    @if(is_array($title ?? null))
+        <section class="card" aria-labelledby="contact-meta-title" style="margin: 16px 0;">
+            <h2 id="contact-meta-title" style="margin: 0 0 12px; font-size: 18px;">Meta passed from route</h2>
+
+            @foreach($title as $key => $value)
+                <p class="meta" style="margin: 0 0 8px;">
+                    <strong>{{ $key }}:</strong>
+                    <span>{{ $value }}</span>
+                </p>
+            @endforeach
+        </section>
+    @endif
 
     <main class="grid">
         <section class="card" aria-labelledby="contact-form-title">
