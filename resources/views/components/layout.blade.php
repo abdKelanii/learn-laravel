@@ -33,6 +33,7 @@
         <nav class="nav" aria-label="Primary">
             <a href="/">Home</a>
             <a href="/about">About</a>
+            <a href="/ideas/create">Ideas</a>
             <a href="/contact">Contact</a>
         </nav>
 
