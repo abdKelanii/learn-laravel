@@ -26,6 +26,12 @@
         .hint { font-size: 13px; opacity: 0.75; }
         .meta { font-size: 14px; opacity: 0.9; }
         .meta a { color: inherit; }
+        nav[aria-label="Pagination Navigation"] { margin-top: 8px; }
+        .pagination { display: flex; gap: 8px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; align-items: center; }
+        .page-item { list-style: none; margin: 0; }
+        .page-link { display: inline-block; padding: 8px 12px; border-radius: 10px; border: 1px solid color-mix(in srgb, currentColor 20%, transparent); text-decoration: none; color: inherit; background: color-mix(in srgb, currentColor 5%, transparent); }
+        .page-item.disabled .page-link { opacity: 0.45; cursor: not-allowed; }
+        .page-item:not(.disabled) .page-link:hover { background: color-mix(in srgb, currentColor 12%, transparent); }
     </style>
 </head>
 <body>
@@ -33,7 +39,7 @@
         <nav class="nav" aria-label="Primary">
             <a href="/">Home</a>
             <a href="/about">About</a>
-            <a href="/ideas/create">Ideas</a>
+            <a href="{{ route('ideas.index') }}">Ideas</a>
             <a href="/contact">Contact</a>
         </nav>
 

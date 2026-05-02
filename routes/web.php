@@ -1,16 +1,16 @@
 <?php
 
+use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
-Route::view('/','welcome', [
+Route::view('/', 'welcome', [
     'title' => 'HomeTiile',
 
 ]);
 
-Route::view('/about','about');
+Route::view('/about', 'about');
 
-Route::view('/contact','contact', [
+Route::view('/contact', 'contact', [
     'title' => [
         'title' => 'Contact',
         'description' => 'Contact us for more information',
@@ -24,19 +24,4 @@ Route::view('/contact','contact', [
     ],
 ]);
 
-Route::view('/ideas/create', 'ideas.create', [
-    'title' => 'New Idea',
-])->name('ideas.create');
-
-Route::post('/ideas', function (Request $request) {
-    $validated = $request->validate([
-        'idea' => ['required', 'string', 'min:3', 'max:500'],
-    ]);
-
-    // For now we just flash it (no DB yet).
-    return back()
-        ->withInput()
-        ->with('success', 'Idea submitted!')
-        ->with('idea_submitted', $validated['idea']);
-})->name('ideas.store');
-
+Route::resource('ideas', IdeaController::class);
