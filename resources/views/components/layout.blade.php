@@ -1,12 +1,13 @@
 @props(['title' => 'Learn Laravel'])
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night" class="bg-base-100 text-base-content">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        :root { color-scheme: light dark; }
+        :root { color-scheme: dark; }
         body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; }
         .container { max-width: 720px; margin: 0 auto; padding: 32px 16px; }
         .nav { display: flex; gap: 12px; margin-bottom: 24px; }
@@ -34,7 +35,7 @@
         .page-item:not(.disabled) .page-link:hover { background: color-mix(in srgb, currentColor 12%, transparent); }
     </style>
 </head>
-<body>
+<body class="min-h-screen antialiased">
     <div class="container">
         <nav class="nav" aria-label="Primary">
             <a href="/">Home</a>

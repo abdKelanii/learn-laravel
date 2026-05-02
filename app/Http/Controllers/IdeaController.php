@@ -40,7 +40,12 @@ class IdeaController extends Controller
      */
     public function store(StoreIdeaRequest $request): RedirectResponse
     {
-        $idea = Idea::query()->create($request->validated());
+        $request->validate([
+            'title' => ['required', 'string', 'max:255', 'min:3'],
+            'body' => ['required', 'string', 'min:3', 'max:5000'],
+        ]);
+
+        $idea = Idea::create($request->validated());
 
         return redirect()
             ->route('ideas.show', $idea)

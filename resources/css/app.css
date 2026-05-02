@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+/* Resolve JS plugin explicitly (Vite 8 + daisyUI: "daisyui" can resolve to browser CSS) */
+@plugin 'daisyui/index.js' {
+    /* Default plugin only ships light + dark; pin night as default so dark mode stays consistent */
+    themes: night --default;
+}
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
