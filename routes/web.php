@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginUserController;
 use App\Http\Controllers\Auth\RegisterUserController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\Auth\LogoutUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome', [
@@ -29,3 +31,8 @@ Route::resource('ideas', IdeaController::class);
 
 Route::get('/register', [RegisterUserController::class, 'create']);
 Route::post('/register', [RegisterUserController::class, 'store']);
+
+Route::get('/login', [LoginUserController::class, 'create']);
+Route::post('/login', [LoginUserController::class, 'store']);
+
+Route::delete('/logout', [LogoutUserController::class, 'destroy']);

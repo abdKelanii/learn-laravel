@@ -1,7 +1,7 @@
-<x-layout title="Register">
+<x-layout title="Login">
     <div class="card">
-        <h1>Register</h1>
-        <p>Create your account.</p>
+        <h1>Login</h1>
+        <p>Sign in to your account.</p>
 
         @if ($errors->any())
             <div class="card" style="margin-bottom: 16px;">
@@ -14,28 +14,8 @@
             </div>
         @endif
 
-        <form method="POST" action="/register">
+        <form method="POST" action="/login">
             @csrf
-
-            <x-form.input
-                id="name"
-                name="name"
-                label="Name"
-                autocomplete="name"
-                placeholder="Jane Doe"
-                value="{{ old('name') }}"
-                required
-            />
-
-            <x-form.input
-                id="username"
-                name="username"
-                label="Username"
-                autocomplete="username"
-                placeholder="janedoe"
-                value="{{ old('username') }}"
-                required
-            />
 
             <x-form.input
                 id="email"
@@ -53,21 +33,13 @@
                 name="password"
                 type="password"
                 label="Password"
-                autocomplete="new-password"
-                required
-            />
-
-            <x-form.input
-                id="password_confirmation"
-                name="password_confirmation"
-                type="password"
-                label="Confirm password"
-                autocomplete="new-password"
+                autocomplete="current-password"
                 required
             />
 
             <div class="actions">
-                <button type="submit">Create account</button>
+                <button type="submit">Sign in</button>
+                <a href="/register" class="hint">Don't have an account? Register</a>
             </div>
         </form>
     </div>

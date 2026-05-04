@@ -14,3 +14,29 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-new(main-content) {
+    animation: 200ms ease fade-in;
+}
+
+::view-transition-old(main-content) {
+    animation: 150ms ease fade-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+}
+
+@keyframes fade-out {
+    to { opacity: 0; }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+}

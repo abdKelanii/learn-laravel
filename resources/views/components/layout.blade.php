@@ -46,10 +46,26 @@
             <a href="{{ route('ideas.index') }}">Ideas</a>
             <a href="/contact">Contact</a>
             <span class="nav-spacer" aria-hidden="true"></span>
-            <a class="btn" href="/register">Register</a>
+            @guest
+                <a class="btn" href="/login">Login</a>
+                <a class="btn" href="/register">Register</a>
+            @endguest
+            @auth
+                <form action="/logout" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn">Logout</button>
+                </form>
+            @endauth
         </nav>
 
-        {{ $slot }}
+        <main style="view-transition-name: main-content;">
+            {{ $slot }}
+        </main>
+
+        <footer style="margin-top: 48px; padding-top: 16px; border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent);">
+            <p class="hint" style="margin: 0; text-align: center;">&copy; {{ date('Y') }} Learn Laravel. All rights reserved.</p>
+        </footer>
     </div>
 
 </body>
