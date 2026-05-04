@@ -10,9 +10,12 @@
         :root { color-scheme: dark; }
         body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; }
         .container { max-width: 720px; margin: 0 auto; padding: 32px 16px; }
-        .nav { display: flex; gap: 12px; margin-bottom: 24px; }
+        .nav { display: flex; gap: 12px; margin-bottom: 24px; align-items: center; }
+        .nav-spacer { flex: 1; }
         .nav a { color: inherit; opacity: 0.85; text-decoration: none; border-bottom: 1px solid transparent; }
         .nav a:hover { opacity: 1; border-bottom-color: currentColor; }
+        .nav a.btn { opacity: 1; border-bottom-color: transparent; padding: 8px 12px; border-radius: 10px; border: 1px solid color-mix(in srgb, currentColor 20%, transparent); background: color-mix(in srgb, currentColor 10%, transparent); }
+        .nav a.btn:hover { background: color-mix(in srgb, currentColor 16%, transparent); }
         h1 { font-size: 32px; margin: 0 0 8px; }
         p { line-height: 1.6; margin: 0 0 16px; opacity: 0.9; }
         .card { border: 1px solid color-mix(in srgb, currentColor 15%, transparent); border-radius: 12px; padding: 16px; background: color-mix(in srgb, currentColor 3%, transparent); }
@@ -42,6 +45,8 @@
             <a href="/about">About</a>
             <a href="{{ route('ideas.index') }}">Ideas</a>
             <a href="/contact">Contact</a>
+            <span class="nav-spacer" aria-hidden="true"></span>
+            <a class="btn" href="/register">Register</a>
         </nav>
 
         {{ $slot }}
