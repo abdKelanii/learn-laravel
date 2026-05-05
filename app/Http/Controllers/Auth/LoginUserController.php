@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class LoginUserController extends Controller
 {
@@ -11,8 +12,20 @@ class LoginUserController extends Controller
         return view('auth.login');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        dd('authenticate user and redirect');
+        $validated = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (auth()->attempt($validated)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/ideas');
+        }
+
+        return back()->withErrors([
+            'email' => 'Invalid credentials',
+        ]);
     }
 }
